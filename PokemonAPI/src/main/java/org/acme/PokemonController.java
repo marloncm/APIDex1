@@ -6,11 +6,14 @@ import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.Response;
 import java.io.File;
+import jakarta.annotation.security.RolesAllowed;
+
 
 @Path("/pokemon")
 public class PokemonController {
 
     @GET
+    @RolesAllowed({"Admin"})
     @Path("/{id}")
     @Produces("image/png") // Define o tipo de conteúdo da resposta como imagem JPEG
     public Response getPokemonImage(@PathParam("id") String id) {
